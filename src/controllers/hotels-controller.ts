@@ -9,13 +9,6 @@ export async function getHotels(req: AuthenticatedRequest, res: Response, next: 
     const hotels = await hotelService.getAll(userId);
     return res.status(httpStatus.OK).send(hotels);
   } catch (error) {
-    // if (error.name === 'NotFoundError') {
-    //   return res.sendStatus(httpStatus.NOT_FOUND);
-    // } else if (error.name === 'RequiredPaymentError') {
-    //   return res.sendStatus(httpStatus.PAYMENT_REQUIRED);
-    // } else {
-    //   return res.sendStatus(httpStatus.BAD_REQUEST);
-    // }
     next(error);
   }
 }

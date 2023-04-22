@@ -15,6 +15,7 @@ async function checkUserEnrollmentAndTicket(userId: number) {
   if (ticket.TicketType.isRemote || ticket.status !== TicketStatus.PAID || !ticket.TicketType.includesHotel) {
     throw requiredPaymentError();
   }
+  return;
 }
 
 async function getAll(userId: number) {
