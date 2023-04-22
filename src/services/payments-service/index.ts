@@ -6,7 +6,7 @@ import paymentsRepository from '@/repositories/payments-repository';
 import ticketsRepository from '@/repositories/tickets-repository';
 
 async function verifyTicketAndEnrollment(ticketId: number, userId: number): Promise<void> {
-  const ticket: Ticket = await ticketsRepository.findTickeyById(ticketId);
+  const ticket: Ticket = await ticketsRepository.findTicketyById(ticketId);
   if (!ticket) throw notFoundError();
 
   const enrollment: Enrollment = await enrollmentRepository.findById(ticket.enrollmentId);
@@ -29,7 +29,7 @@ async function paymentProcess(ticketId: number, userId: number, cardData: CardPa
 
   const ticket: Ticket & {
     TicketType: TicketType;
-  } = await ticketsRepository.findTickeWithTypeById(ticketId);
+  } = await ticketsRepository.findTicketWithTypeById(ticketId);
 
   const paymentData: PaymentParams = {
     ticketId,
