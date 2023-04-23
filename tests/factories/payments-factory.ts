@@ -7,7 +7,7 @@ export async function createPayment(ticketId: number, value: number) {
       ticketId,
       value,
       cardIssuer: faker.name.findName(),
-      cardLastDigits: faker.datatype.number({ min: 1000, max: 9999 }).toString(),
+      cardLastDigits: faker.datatype.number({ min: 1000, max: 9999 }).toString().slice(-4),
     },
   });
 }
